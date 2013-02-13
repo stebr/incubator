@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>growl</title>
+	</head>
+	<body>
+
+	    <style>
+	    html,
+		    body{
+		    	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 13px;
+				line-height: 18px;
+				color: #333; 
+				padding:0;
+				margin:0;
+				height:100%;
+			}
+			input, button, select, textarea {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			}
+	    </style>
+		
+		<script type='text/javascript' src='../../../steal/steal.js'></script>
+
+		<script type='text/javascript'>
+			steal('ui/growl')
+			.then(function($, Control){
+
+				Notify.add({
+					header: "Amazing things",
+					position: "bottom left",
+					text: "Click and hold down your mouse for a moment to pan."
+				});
+				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,137 @@
+// Advanced Colors
+// --------------------------------------------------
+.advanced-color{
+	-webkit-user-select: none;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: stretch;
+	-webkit-box-pack: start;
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+	-moz-box-align: stretch;
+	-moz-box-pack: start;
+	color:#c5ccd5;
+	padding:5px 10px;
+
+	form{
+		padding:0;
+		margin:0;
+	}
+
+	canvas {
+		display: block;
+	}
+
+	label {
+		display: block;
+		overflow: hidden;
+		margin:0;
+
+		span {
+			display: block;
+			float: left;
+			width: 30px;
+			line-height: 25px;
+		}
+
+		span:after {
+			content: ':';
+		}
+
+		input {
+			width: 60px;
+			margin-bottom:5px;
+		}
+	}
+
+	.spectrum,
+	.gradient,
+	.alpha {
+		cursor: pointer;
+		position: relative;
+		overflow: visible;
+		height:215px;
+		border:solid 1px #82858b;
+	}
+
+	.position {
+		position: absolute;
+		left: 0;
+		top: 0;
+		pointer-events: none;
+		z-index: 100;
+	}
+
+	.gradient .position {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		border: 2px solid #000;
+		margin: -5px 0 0 -6px;
+	}
+
+	.spectrum .position,
+	.alpha .position {
+		height: 2px;
+		background: #000;
+		width: 10px;
+		margin-top: -1px;
+	}
+
+	.preview {
+		background: url("images/grid.png") repeat;
+	}
+
+	.spectrum{
+		margin-left:5px;
+	}
+
+	.alpha {
+		background: url("images/grid.png") repeat;
+		margin: 0 5px;
+	}
+
+	.controls {
+		overflow: hidden;
+	}
+
+	.preview {
+		margin: 0 0 5px 0;
+	}
+
+	.preview .inner {
+		height: 23px;
+	}
+
+	.original {
+		height: 5px;
+	}
+
+	footer {
+		margin-top: 8px;
+
+		.right {
+			float: right;
+		}
+	}
+
+	button{
+		background:#343840;
+		color:@white;
+		border:solid 1px #71777f;
+		display: inline-block;
+		padding: 2px 8px;
+		font-size: 14px;
+		line-height: 20px;
+		text-align: center;
+		vertical-align: middle;
+		cursor: pointer;
+		.border-radius(5px);
+	}
+
+	.colorCanvasInput {
+		width: 30px;
+		height: 20px;
+		background-image: url("images/grid.png");
+	}
+}

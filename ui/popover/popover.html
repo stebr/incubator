@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>popover</title>
+	</head>
+	<body>
+	    <style>
+	    html,
+		    body{
+		    	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 13px;
+				line-height: 18px;
+				color: #333; 
+				padding:0;
+				margin:0;
+				height:100%;
+			}
+			input, button, select, textarea {
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			}
+			li{padding:10px;}
+	    </style>
+
+		<ul style="margin:150px">
+	    	<li><a id="elm" href="#">Popover based on elm</a></li>
+	    	<li><a id="pos" href="#">Popover based on position</a></li>
+	    </ul>
+
+		
+		<script type='text/javascript' src='../../../steal/steal.js'></script>
+
+		<script type='text/javascript'>
+			steal('mj/ui/popover')
+			.then(function(){
+
+				var popover = new Popover(document.body, { placement: "right" });
+
+				$('#elm').bind('mouseover', function(){
+					popover.element.trigger('show', ['Title', 'My Contents lies over the ocean', this])
+				});
+				
+				$('#pos').bind('mouseover', function(ev){
+					popover.show('Title', 'My Contents lies over the ocean', ev)
+				});
+
+			});
+		</script>
+	</body>
+</html>

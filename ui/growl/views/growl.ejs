@@ -1,0 +1,17 @@
+<div class="notification">
+	<% if(this.image){ %>
+		<img class="image" src="<%== this.image %>" />
+	<% } %>
+
+	<% if(this.header){ %>
+		<h2><%== alz(this.header) %></h2>
+	<% } %>
+
+	<% if(this.text){ %>
+		<p><%== alz(this.text) %></p>
+	<% } %>
+
+	<% if(this.dismissable) { %>
+		<a class="close" href="#">×</a>
+	<% } %>
+</div>
