@@ -1,6 +1,6 @@
 // Advanced Colors
 // --------------------------------------------------
-.advanced-color{
+.color_picker{
 	-webkit-user-select: none;
 	display: -webkit-box;
 	-webkit-box-orient: horizontal;
@@ -26,6 +26,7 @@
 		display: block;
 		overflow: hidden;
 		margin:0;
+		font-size:.9em;
 
 		span {
 			display: block;
@@ -41,6 +42,7 @@
 		input {
 			width: 60px;
 			margin-bottom:5px;
+			padding: 0 6px;
 		}
 	}
 
@@ -50,7 +52,7 @@
 		cursor: pointer;
 		position: relative;
 		overflow: visible;
-		height:215px;
+		height:221px;
 		border:solid 1px #82858b;
 	}
 
@@ -78,10 +80,6 @@
 		margin-top: -1px;
 	}
 
-	.preview {
-		background: url("images/grid.png") repeat;
-	}
-
 	.spectrum{
 		margin-left:5px;
 	}
@@ -96,42 +94,54 @@
 	}
 
 	.preview {
-		margin: 0 0 5px 0;
-	}
+		.reset();
+		margin: 0 0 5px 1px;
+		font-size:.8em;
 
-	.preview .inner {
-		height: 23px;
-	}
+		.span6{
+			text-align: center;
+			margin-left:0;
+		}
 
-	.original {
-		height: 5px;
-	}
+		span{
+			display:block;
+			line-height:13px;
+		}
 
-	footer {
-		margin-top: 8px;
+		.outer{
+			background: url("images/grid.png") repeat;
+		}
 
-		.right {
-			float: right;
+		.inner{
+			border:solid 1px #82858b;
+			border-right:none;
+			height:42px;
+		}
+
+		.original{
+			border:solid 1px #82858b;
+			border-left:none;
+			height: 42px;
 		}
 	}
 
-	button{
-		background:#343840;
-		color:@white;
-		border:solid 1px #71777f;
-		display: inline-block;
-		padding: 2px 8px;
-		font-size: 14px;
-		line-height: 20px;
-		text-align: center;
-		vertical-align: middle;
-		cursor: pointer;
-		.border-radius(5px);
+	footer {
+		margin-top: 5px;
+
+		button{
+			background:#343840;
+			color:@white;
+			border:solid 1px #71777f;
+			display: inline-block;
+			padding: 2px 8px;
+			font-size: 14px;
+			line-height: 20px;
+			text-align: center;
+			vertical-align: middle;
+			cursor: pointer;
+			.border-radius(5px);
+			width:100%;
+		}
 	}
 
-	.colorCanvasInput {
-		width: 30px;
-		height: 20px;
-		background-image: url("images/grid.png");
-	}
 }

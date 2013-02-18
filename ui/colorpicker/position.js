@@ -3,8 +3,7 @@ steal('can/construct/super', 'can/control', function(){
 can.Control('Position',{
 
 	setup:function(el,options){
-		var div = $('<div />').appendTo(el);
-		this._super(div, options);
+		this._super($('<div />').appendTo(el), options);
 	},
 
 	init:function(){

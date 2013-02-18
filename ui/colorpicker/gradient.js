@@ -3,7 +3,7 @@ steal('./canvas', './position', function(){
 Canvas('Gradient',{
 	defaults:{
 		width: 250,
-		height: 215,
+		height: 221,
 		color: Color.black()
 	}
 },{

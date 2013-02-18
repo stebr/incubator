@@ -3,7 +3,7 @@ steal('./canvas', function(){
 Canvas('Spectrum',{
 	defaults:{
 		width: 25,
-		height: 215,
+		height: 221,
 		color: undefined
 	}
 },{

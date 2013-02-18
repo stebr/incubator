@@ -3,7 +3,7 @@ steal('./canvas', './color', function(){
 Canvas('Alpha',{
 	defaults:{
 		width: 25,
-		height: 215,
+		height: 221,
 		color: Color.black()
 	}
 },{

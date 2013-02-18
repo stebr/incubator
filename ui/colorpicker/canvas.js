@@ -2,10 +2,6 @@ steal('can/control',
 	  'can/construct/super',
 	  './color', 
 function(){
-
-// private members
-var mousemove;
-
 can.Control('Canvas',{
 
 	init:function(){
@@ -42,18 +38,18 @@ can.Control('Canvas',{
 	},
 
 	"canvas mousedown":function(elm, ev){
-		mousedown = true;
+		this.mousedown = true;
 		this.over(ev); 
 	},
 
 	"canvas mousemove":function(elm,ev){
-		if(mousedown){
+		if(this.mousedown){
 			this.over(ev);
 		}
 	},
 
 	"{window} mouseup":function(elm,ev){
-		mousedown = false;
+		this.mousedown = false;
 	},
 
 	over:function(e) {

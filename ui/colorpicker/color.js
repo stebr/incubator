@@ -30,20 +30,66 @@ can.Observe('Color',{
 },{
 
 	init:function(rgb) {
-		this.set(tinycolor(rgb).toRgb())
+		// defaults
+		rgb || (rgb = {
+			r: 255,
+			g: 0,
+			b: 0
+		});
+
+		this.attr(tinycolor(rgb).toRgb());
     },
+
+    toString : new can.compute(function() {
+    	if ((this.attr('a') != null) && this.a !== 1) {
+    		return "rgba(" + this.attr('r') + ", " + 
+    						 this.attr('g') + ", " + 
+    						 this.attr('b') + ", " + 
+    						 this.attr('a') + ")";
+    	} else {
+    		return "#" + this.toHex();
+    	}
+    }),
+
+	hex: new can.compute(function(){
+		return this.toHex()
+	}),
+
+	attr:function(attr, val){
+		if(typeof attr === "object"){
+			if (attr.r != null) {
+				attr.r = parseInt(attr.r, 10);
+	    	}
+
+	    	if (attr.g != null) {
+	    		attr.g = parseInt(attr.g, 10);
+	    	}
+
+	    	if (attr.b != null) {
+	    		attr.b = parseInt(attr.b, 10);
+	    	}
+
+	    	if(attr.a != null){
+	    		attr.a = parseFloat(attr.a);
+	    	} else {
+	    		attr.a = this.a || 1;
+	    	}
+		}
+
+		return this._super(attr, val);
+	},
 
     tinycolor: function() {
 		return tinycolor({
-			r: this.r,
-			g: this.g,
-			b: this.b,
-			a: this.a
+			r: this.attr('r'),
+			g: this.attr('g'),
+			b: this.attr('b'),
+			a: this.attr('a')
 		});
 	},
 
     toHex:function() {
-		return '#' + this.tinycolor().toHex().toUpperCase();
+		return this.tinycolor().toHex().toUpperCase();
     },
 
 	toHSV: function() {
@@ -90,40 +136,8 @@ can.Observe('Color',{
     	return !this.attr('a');
     },
 
-    set: function(rgb) {
-    	if (rgb.r != null) {
-    		this.attr('r', parseInt(rgb.r, 10));
-    	}
-
-    	if (rgb.g != null) {
-    		this.attr('g', parseInt(rgb.g, 10));
-    	}
-
-    	if (rgb.b != null) {
-    		this.attr('b', parseInt(rgb.b, 10));
-    	}
-
-    	if (rgb.a != null) {
-    		this.attr('a', parseFloat(rgb.a));
-    	}
-
-    	if (isNaN(this.a)) {
-    		this.attr('a', 1);
-    	}
-
-    	return this;
-    },
-
     clone: function(rgb) {
     	return new Color(can.extend(this.toRGB(), rgb));
-    },
-
-    toString: function() {
-    	if ((this.a != null) && this.a !== 1) {
-    		return "rgba(" + this.r + ", " + this.g + ", " + this.b + ", " + this.a + ")";
-    	} else {
-    		return this.toHex();
-    	}
     }
 })
 
