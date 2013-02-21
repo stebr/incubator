@@ -1,32 +1,19 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>mj.ui.Modal</title>
-	<script type='text/javascript' src='../../../steal/steal.js?mj/ui/util/docee'></script>
+
 </head>
 <body>
 
-<div class="row-fluid">
-  <div class="span4">
-    <h3>mj.ui.Modal</h3>
-    <p>Demo will popover the current UI</p>
-  </div>
-  <div class="span8">
 
-  <div class="docs-example">
-    <div id="content">Modal content goes here</div>
-	<script type='text/javascript'>
-		steal('mj/ui/modal', function(){
-			var modal = new Modal("#content", {
-				header: 'Modal'
-			}).show()
-		})
-	</script>
-  </div>
-
-</div>
-</div>
-
+<div id="content">Modal content goes here</div>
+<script type='text/javascript'>
+	steal('modal', function(){
+		var modal = new Modal("#content", {
+			header: 'Modal'
+		}).show()
+	})
+</script>
 
 </body>
 </html>

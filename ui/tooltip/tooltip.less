@@ -1,6 +1,11 @@
 //
 // Tooltips
 // --------------------------------------------------
+
+// Needs twitter bootstrap
+@import 'variables.less';
+@import 'mixins.less';
+
 .tooltip{
 	position: absolute;
   	z-index: @zindexTooltip;
@@ -30,7 +35,7 @@
   		border-style: solid;
 	}
 
-	&.pos-top {
+	&.pos-bottom {
 		margin-bottom: -3px;
 
 		.tooltip-arrow {
@@ -42,7 +47,7 @@
 		}
 	}
 
-	&.pos-right {
+	&.pos-left {
 		margin-left: -3px;
 
 		.tooltip-arrow {
@@ -54,7 +59,7 @@
 		}
 	}
 
-	&.pos-left {
+	&.pos-right {
 		margin-right: -3px; 
 
 		.tooltip-arrow {
@@ -66,7 +71,7 @@
 		}
 	}
 
-	&.pos-bottom{
+	&.pos-top{
 		margin-top: -3px;
 
 		.tooltip-arrow {

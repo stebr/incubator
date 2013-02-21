@@ -5,7 +5,7 @@ steal('can/util/function',
 	  'can/control/modifier',
 	  'can/view/ejs',
 	  'can/view/modifiers',
-	  'canui/positionable',
+	  'ui/positionable',
 	  './popover.less',
 	  './views/init.ejs',
 function() {
@@ -41,7 +41,7 @@ can.Control("Popover",{
 		hideEvent: 'mouseleave',
 
 		// Template for the popover
-		template: 'views/init.ejs',
+		template: '/views/init.ejs',
 
 		// Header to be displayed, optinal
 		title: undefined,
@@ -83,8 +83,9 @@ can.Control("Popover",{
 
 	init:function(){
 		this.positionable = new can.ui.Positionable(this.options.popover, 
-			can.extend(this.constructor.positions[this.options.placement], 
-				{ offset: this.options.offset }));
+			can.extend(this.constructor.positions[this.options.placement], { 
+					offset: this.options.offset
+				}));
 	},
 
 	update:function(options){
@@ -136,15 +137,12 @@ can.Control("Popover",{
 			this.options.popover.find('.popover-content').html(this.attr(elm, 'content'));
 			this.options.popover.fadeIn('fast').trigger('move', elm);
 
-			// detect if we flipped it and adjust css classes
-			// we have to run this everytime to make sure we
-			// get reset after a movement.
-			var flipped = this.options.popover.attr('class').match(/\bui-flipped-\S+/g),
-				position = flipped ? flipped[0].replace('ui-flipped-', '') : this.options.placement;
-
-			this.options.popover.removeClass(function (index, css) {
-	    		return (css.match(/\bpos-\S+/g) || []).join(' ');
-			}).addClass("pos-" + position);
+			// you need to remove the opposite classes since they will conflict
+			if(this.options.placement === "top" || this.options.placement === "bottom"){
+				this.options.popover.removeClass('pos-left').removeClass('pos-right');
+			} else {
+				this.options.popover.removeClass('pos-top').removeClass('pos-bottom');
+			}
 
 			// trigger events
 			this.options.popover.trigger('shown');

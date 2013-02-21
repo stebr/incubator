@@ -1,6 +1,11 @@
 //
 // Modals
 // --------------------------------------------------
+
+// Needs twitter bootstrap
+@import 'variables.less';
+@import 'mixins.less';
+
 .modal{
 	position: fixed;
 	z-index: @zindexModal;
@@ -24,26 +29,27 @@
 	}
 
 	.modal-header {
-		padding: 9px 15px;
+		padding: 9px 8px 0 15px;
 		//border-bottom: 1px solid #eee;
 
 		// Close icon
 		.close { 
-			margin-top: 2px;
+			position: absolute;
+			top:2px;
+			right:5px;
 			color:@white;
 			font-weight:normal;
 		}
 
 		// Heading
 		h3 {
-			margin: 0;
-			line-height: 30px;
+			font-family: Roboto;
+			font-weight: normal;
 			color:@white;
-			font-size:16px;
+		}
 
-			&.draggable{
-				cursor:move;
-			}
+		&.draggable{
+			cursor:move;
 		}
 	}
 
@@ -52,6 +58,7 @@
 		position: relative;
 		max-height: 400px;
 		padding: 15px;
+		padding-top:0;
 		overflow-y: auto;
 		color:#b1b8be;
 	}

@@ -16,7 +16,7 @@ Below initalizes a basic tooltip and reads the title from the tag.
 Now we init the tooltip by calling the control on the parent element and passing the child selectors
 that will contain the tooltips.
 
-	var tip = new mj.ui.Tooltip('.me', { elm: '.tooltips' })
+	var tip = new Tooltip('.me', { elm: '.tooltips' })
 
 NOTE: This is the preferred method because it only creates one tooltip for all the elements that need a tooltip.
 
@@ -24,7 +24,7 @@ Individual tooltips can alternatively be specified by calling the tooltip on the
 
 	<a href="#" class="mytooltip">hover over me</a>
 
-	var tip = new mj.ui.Tooltip('.mytooltip', { title: "Custom title via options" });
+	var tip = new Tooltip('.mytooltip', { title: "Custom title via options" });
 
 You can update the tooltip options by calling `update` on the controller.
 

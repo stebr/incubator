@@ -4,15 +4,15 @@ can.Control('Password',
 {
 	defaults : 
 	{
-		shortPass:  lz('%lbl.password_strength.too_short'),
+		shortPass:  "Too short",
 		shortCss: 'short',
 		longCss: 'long',
-		longPass: lz('%lbl.password_strength.too_long'),
-		badPass: lz('%lbl.password_strength.weak'),
+		longPass: "Too long",
+		badPass: "Too Weak",
 		badCss: 'bad',
-		goodPass: lz('%lbl.password_strength.good'),
+		goodPass: "Good",
 		goodCss: 'good',
-		strongPass: lz('%lbl.password_strength.strong'),
+		strongPass: "Strong",
 		strongCss: 'strong',
 		minPasswordLength: 8,
 		maxPasswordLength: 32
@@ -29,9 +29,7 @@ can.Control('Password',
 		$el.wrap('<div class="ui-widget-password" />');
 		var div = $el.parent();
 		
-		div.append('<div class="strength-indicator">' + 
-			lz("%lbl.password_strength.strength") + 
-			'<span class="strength"></span></div>');
+		div.append('<div class="strength-indicator"><span class="strength"></span></div>');
 	
 		this._super(div, options);
 	},

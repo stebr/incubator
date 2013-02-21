@@ -2,14 +2,12 @@ steal('can/util/function',
 	  'can/construct/super',
 	  'can/control',
 	  'can/control/plugin',
-	  'mj/util/key.js',
 	  'can/view/ejs',
 	  'can/view/modifiers',
 	  'jquery/event/drag',
 	  'jquery/event/drag/limit',
-	  'canui/positionable',
+	  'ui/positionable',
 	  './modal.less',
-	  './views/init.ejs',
 function(){
 
 // private members
@@ -22,23 +20,44 @@ can.Control('Modal', {
 		animated: false,
 		backdrop: true,
 		of: undefined,
-		header: '',
+		header: undefined,
 		closeButton: true,
 		drag: true,
-		destroyOnHide: false,
-		template: 'views/init.ejs'
+		cssClass: '',
+		destroyOnHide: false
 	}
 },{
 
 	setup:function(el,options){
 		options = $.extend( this.constructor.defaults, options || {} );
 
-		$(el).replaceWith(function(){
-			return el = $(can.view.render(options.template, 
-				can.extend(options, { content: $(this).outerHTML() }) ));
-		});
+		// wrap in content div
+		$(el).wrap('<div />');
+		var content = $(el).parent();
+		content.addClass('modal-body');
 
-		this._super(el, options);
+		// wrap in outer wrapper
+		content.wrap('<div />');
+		var wrapper = content.parent();
+		options.animated && (options.cssClass += ' animated');
+		wrapper.addClass('modal ' + options.cssClass)
+			   .attr('tabindex', '-1')
+			   .width(options.width)
+			   .height(options.height);
+
+		// append header
+		var header = $('<div>').prependTo(wrapper);
+		header.addClass((options.drag ? 'draggable ' : '') + 'modal-header clearfix');
+
+		if(options.header){
+			$('<h3>').appendTo(header).html(options.header);
+		}
+
+		if(options.closeButton){
+			header.append('<button type="button" class="close">×</button>');
+		}
+
+		this._super(wrapper, options);
 	},
 
 	init:function(){
@@ -132,20 +151,5 @@ can.Control('Modal', {
 	}
 
 });
-
-/**
- * jQuery plugin for `outerHTML` due to lack of support in
- * older Firefox browsers (<16).
- */
-$.fn.outerHTML = function() {
-	var el = $(this);
-    if (el.attr('outerHTML')) {
-        return el.attr('outerHTML');
-    } else {
-    	var content = el.wrap('<div></div>').parent().html();
-        el.unwrap();
-        return content;
-    }
-};
 
 });

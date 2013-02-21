@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+</head>
+<body>
+
+
+<div id="cal"></div>
+<div id="selected"></div>
+<button id="change">Change to 01/01/2012</button>
+<button id="alert">Alert current date</button>
+<button id="start">Set start date 01/01/2014</button>
+ <button id="end">Set end date 01/05/2014</button>
+
+<script type='text/javascript'>
+	steal('mj/ui/datepicker', function(){
+		// Basic usage
+		var datepicker = new Datepicker('#cal');
+
+		datepicker.element.bind('changed', function(ev){
+			$('#selected').html('Selected: '+ ev.date.toDateString());
+		});
+
+		$('#change').click(function(){
+			datepicker.val('01/01/2012')
+		});
+
+		$('#alert').click(function(){
+			alert(datepicker.val());
+		});
+
+		$('#start').click(function(){
+			datepicker.setStartDate('01/01/2014')
+		});
+
+		$('#end').click(function(){
+			datepicker.setEndDate('01/05/2014')
+		});
+	});
+</script>
+
+
+</body>
+</html>

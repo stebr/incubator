@@ -1,0 +1,81 @@
+<div class="datepicker datepicker-inline <%== this.rtl ? 'datepicker-rtl' : '' %>">
+	<div class="datepicker-days">
+		<table class=" table-condensed">
+			<thead>
+				<tr>
+					<% if(this.rtl) { %>
+					<th class="next">›</th>
+					<th colspan="5" class="switch"></th>
+					<th class="prev">‹</th>
+					<% } else { %>
+					<th class="prev">‹</th>
+					<th colspan="5" class="switch"></th>
+					<th class="next">›</th>
+					<% } %>
+				</tr>
+			</thead>
+			<tbody></tbody>
+			<tfoot>
+				<tr>
+					<th colspan="7" class="today"></th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div class="datepicker-months">
+		<table class="table-condensed">
+			<thead>
+				<tr>
+					<% if(this.rtl) { %>
+					<th class="next">›</th>
+					<th colspan="5" class="switch"></th>
+					<th class="prev">‹</th>
+					<% } else { %>
+					<th class="prev">‹</th>
+					<th colspan="5" class="switch"></th>
+					<th class="next">›</th>
+					<% } %>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="7"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="7" class="today"></th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div class="datepicker-years">
+		<table class="table-condensed">
+			<table class="table-condensed">
+			<thead>
+				<tr>
+					<% if(this.rtl) { %>
+					<th class="next">›</th>
+					<th colspan="5" class="switch"></th>
+					<th class="prev">‹</th>
+					<% } else { %>
+					<th class="prev">‹</th>
+					<th colspan="5" class="switch"></th>
+					<th class="next">›</th>
+					<% } %>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="7"></td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="7" class="today"></th>
+				</tr>
+			</tfoot>
+		</table>
+		</table>
+	</div>
+</div>

@@ -25,7 +25,7 @@ will use the default functionality of the canui.positionable plugin to fit it pr
 
 Below initalizes a basic popover in hidden state.
 
-	var pop = new mj.ui.Popover('#container', {
+	var pop = new Popover('#container', {
 		hideDelay: false
 	})
 
@@ -45,7 +45,7 @@ You can hide it by calling 'hide' or trigger the 'hide' event similarly to above
 
 or
 
-	$('.mj_ui_popover').trigger('hide');
+	$('.popover').trigger('hide');
 
 ## API
 
@@ -57,7 +57,7 @@ or
 	until you manually call 'hide'.  Defaults to: 'false'.
 - mouseLeaveDelay: The milliseconds to which the popover will hide after the users mouse leaves the popover element.  If you pass
 	'false', the popover will not be hidden until you manually call 'hide'.  Defaults to: '500'.
-- template: the template to use to render the popover.  Defaults to: 'mj/ui/popover/views/init.ejs'.
+- template: the template to use to render the popover.  Defaults to: 'views/init.ejs'.
 
 ### Methods
 - show: Shows the popover.  Arguments are: header, content, target.

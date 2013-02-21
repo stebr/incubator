@@ -1,48 +1,29 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>mj.ui.Tooltip</title>
 </head>
 <body>
-<script type='text/javascript' src='../../../steal/steal.js'></script>
+
+
+<a href="#" class="above" data-title="Above my link">Above</a>
+<a href="#" class="below" data-title="Below my link">Below</a>
+<a href="#" class="left" data-title="Left my link">Left</a>
+<a href="#" class="right" data-title="Right my link">Right</a>
+
 <script type='text/javascript'>
-steal('mj/ui/util/docee', function(){
-	docee.readme('mj/ui/tooltip/README.md');
-})
-</script>
-
-
-<div class="row-fluid">
-  <div class="span5">
-    <div class="docs-content"></div>
-  </div>
-  <div class="span7">
-
-  <div class="docs-example">
-    <a href="#" class="above" data-title="Above my link">Above</a>
-	<a href="#" class="below" data-title="Below my link">Below</a>
-	<a href="#" class="left" data-title="Left my link">Left</a>
-	<a href="#" class="right" data-title="Right my link">Right</a>
-
-	<script type='text/javascript'>
-	steal('mj/ui/tooltip', function(){
-		new Tooltip('.above');
-		new Tooltip('.below', {
-			placement: 'bottom'
-		});
-		new Tooltip('.left', {
-			placement: 'left'
-		});
-		new Tooltip('.right', {
-			placement: 'right'
-		});
+steal('tooltip', function(){
+	new ooltip('.above');
+	new Tooltip('.below', {
+		placement: 'bottom'
 	});
-	</script>
-
-  </div>
-
-</div>
-</div>
+	new Tooltip('.left', {
+		placement: 'left'
+	});
+	new Tooltip('.right', {
+		placement: 'right'
+	});
+});
+</script>
 
 </body>
 </html>

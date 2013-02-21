@@ -1,3 +1,11 @@
+//
+// Popover
+// --------------------------------------------------
+
+// Needs twitter bootstrap
+@import 'variables.less';
+@import 'mixins.less';
+
 .popover{
 	position: absolute;
 	top: 0;
@@ -62,7 +70,7 @@
   		content: "";
 	}
 
-	&.pos-top .arrow {
+	&.pos-bottom .arrow {
 		left: 50%;
 		margin-left: -@popoverArrowOuterWidth;
 		border-bottom-width: 0;
@@ -77,7 +85,7 @@
 		}
 	}
 
-	&.pos-right .arrow {
+	&.pos-left .arrow {
 		top: 50%;
 		left: -@popoverArrowOuterWidth;
 		margin-top: -@popoverArrowOuterWidth;
@@ -93,7 +101,7 @@
 		}
 	}
 	
-	&.pos-bottom .arrow {
+	&.pos-top .arrow {
 		left: 50%;
 		margin-left: -@popoverArrowOuterWidth;
 		border-top-width: 0;
@@ -109,7 +117,7 @@
 		}
 	}
 
-	&.pos-left .arrow {
+	&.pos-right .arrow {
 		top: 50%;
 		right: -@popoverArrowOuterWidth;
 		margin-top: -@popoverArrowOuterWidth;

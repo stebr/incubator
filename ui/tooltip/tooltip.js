@@ -3,9 +3,9 @@ steal('can/util/function',
 	  'can/control',
 	  'can/control/plugin', 
 	  'can/control/modifier',
-	  'canui/positionable')
-.then('./tooltip.less')
-.then(function() {
+	  'ui/positionable',
+	  './tooltip.less',
+function() {
 
 can.Control("Tooltip",{
 	defaults:{
@@ -91,23 +91,20 @@ can.Control("Tooltip",{
 
 	show:function(elm, event){
 		clearTimeout(this.hideTimeout);
-		this.showTimeout = setTimeout(this.proxy(function(){	
+		this.showTimeout = setTimeout(this.proxy(function(){
+			// update dom and reposition
 			this.options.tooltip.find('.tooltip-inner').html(this.attr(elm, 'title'));
-
-			// move item
 			this.options.tooltip.fadeIn('fast').trigger('move', elm || event);
 
-			// detect if we flipped it and adjust css classes
-			// we have to run this everytime to make sure we
-			// get reset after a movement.
-			var flipped = this.options.tooltip.attr('class').match(/\bui-flipped-\S+/g),
-				position = flipped ? flipped[0].replace('ui-flipped-', '') : this.attr(elm, 'placement');
+			// you need to remove the opposite classes since they will conflict
+			if (this.options.popover) {
+				if(this.options.placement === "top" || this.options.placement === "bottom"){
+					this.options.popover.removeClass('pos-left').removeClass('pos-right');
+				} else {
+					this.options.popover.removeClass('pos-top').removeClass('pos-bottom');
+				}
+			}
 
-			this.options.tooltip.removeClass(function (index, css) {
-	    		return (css.match(/\bpos-\S+/g) || []).join(' ');
-			}).addClass("pos-" + position);
-
-			// trigger events
 			this.options.tooltip.trigger('shown');
 		}), this.options.showDelay);
 	},

@@ -33,7 +33,7 @@ can.Control('ColorPicker',{
 	},
 
 	init:function(){
-		this.element.append('views/init.ejs', this.options);
+		this.element.append('views/advanced.ejs', this.options);
 	},
 
 	// =============================== Events ===============================
@@ -54,10 +54,12 @@ can.Control('ColorPicker',{
 		e.preventDefault();
 		var color = elm.val();
 
-		if(/^#[0-9A-F]{6}$/i.test(color)){
-			this.options.color.attr(tinycolor(color).toRgb());
-		} else {
-			alert('Not a valid HEX color');
+		if(color.length){
+			if(/^#[0-9A-F]{6}$/i.test(color)){
+				this.options.color.attr(tinycolor(color).toRgb());
+			} else {
+				alert('Not a valid HEX color');
+			}
 		}
 	},
 
