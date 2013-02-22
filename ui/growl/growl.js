@@ -107,13 +107,7 @@ can.Control('Notify.Bubble',{
 	" mouseleave": "startTimer",
 
 	".close click": "dismiss"
-})
+});
 
-/**
- * Create an instance of the notification
- * engine as soon as its brought into the
- * page.
- */
-new Notify();
 
 });

@@ -16,7 +16,7 @@ Below initalizes a basic tooltip and reads the title from the tag.
 Now we init the tooltip by calling the control on the parent element and passing the child selectors
 that will contain the tooltips.
 
-	var tip = new Tooltip('.me', { elm: '.tooltips' })
+	var tip = new Tooltip('.me', { selector: '.tooltips' })
 
 NOTE: This is the preferred method because it only creates one tooltip for all the elements that need a tooltip.
 
@@ -42,7 +42,7 @@ You can update the tooltip options by calling `update` on the controller.
 - hideDelay: Delay to hide the tooltip after `hide` is triggered.
 - showDelay: Delay to show the tooltip after `show` is triggered.
 - title: The title to show in the baloon.
-- elm: jQuery selector to make tooltips on.  If not specified, assumes the element it was called on.
+- selector : If a selector is provided, tooltip objects will be delegated to the specified targets.
 
 ### Methods
 - update: Updates the `defaults` of the tooltip.  Arguments: Object

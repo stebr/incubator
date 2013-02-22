@@ -2,7 +2,7 @@ steal('jquery',
 	  'can/control', 
 	  'can/construct/proxy', 
 	  'can/control/plugin', 
-	  'can/control/modifier/key',
+	  'can/control/key.js',
 function(){
 
 // private members
@@ -13,7 +13,7 @@ var focused,
 	times,
 	selected;
 
-can.Control('mj.ui.Selectable', {
+can.Control('Selectable', {
 	defaults:{
 		selectOn: "[tabindex]",
 		selectedClassName : "hover",

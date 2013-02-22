@@ -25,6 +25,7 @@ Why would you use this over just normal position plugin?
 - It allows you to position the element outside the area with the `keep` option
 - It listens to a single element, remembering the options for easier access later.  You have to call position everytime with your options if you want to move the element later.
 - It listens to 'move' which is a 'reverse' event that will trigger children to move when parent is moved.
+- Adds position css classes to the element for CSS styling.
 
 ## API
 
