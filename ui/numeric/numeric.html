@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>mj.ui.Numeric</title>
+
+    <style>
+        #formPanel{
+            padding: 10px;
+            background-color: #41464C;
+            height: 200px;
+            width: 400px;
+        }
+        .label{
+            float: left;
+            margin: 2px 2px 0px 0px;
+        }
+        #numeric{
+            float: left;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Numeric Spinner Example</h3>
+
+    <p>Compute val: <span id="compute"></span></p>
+    <p>Change event: <span id="event"></span></p>
+    <p><button id="change">Change to 20</button></p>
+    <p><button id="changePast">Change to 600</button></p>
+    <p><button id="step">Change step to 50</button></p>
+    <p>Min value: 5</p>
+    <p>Max value: 5</p>
+
+    <div id="formPanel">
+        <span class="label">Number: </span>
+        <input type="text" min="5" id="numeric" />
+    </div>
+
+    <script type='text/javascript' src='../../../steal/steal.js'></script>
+
+    <script type='text/javascript'>
+        steal('mj/ui/style','mj/ui/numeric', function(){
+        	var compute = new can.compute(12);
+
+        	var numeric = new mj.ui.Numeric('#numeric', {
+        		val: compute,
+        		max: 500
+        	});
+
+        	// change the value
+        	$('#change').click(function(){
+        		numeric.val(20);
+        	});
+
+        	$('#changePast').click(function(){
+        		numeric.val(600);
+        	});
+
+        	numeric.element.bind('change', function(ev, val){
+        		$('#event').html(val);
+        	});
+
+        	$('#step').click(function(){
+        		numeric.update({ step: 50 });
+        	});
+
+        	// bind on the compute
+        	compute.bind('change', function(ev, val){
+        		$('#compute').html(val);
+        	});
+
+
+        })
+    </script>
+</body>
+</html>

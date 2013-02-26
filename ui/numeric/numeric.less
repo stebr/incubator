@@ -1,0 +1,39 @@
+@import 'style/variables.less';
+@import 'style/mixins.less';
+
+@buttonHeight: 5px;
+@buttonWidth: 9px;
+
+.numeric{
+	position:relative;
+	float:left;
+
+	input{
+		margin-bottom:0 !important;
+		padding-right:(@buttonWidth + 10);
+	}
+
+	button{
+		position: absolute;
+		background:none;
+		border:none;
+		padding:0;
+		margin:0;
+		right:5px;
+		height:@buttonHeight;
+		width:@buttonWidth;
+
+		img{
+			display: block;
+		}
+
+		&.up{
+			top: (@buttonHeight - 1);
+		}
+
+		&.down{
+			bottom:(@buttonHeight - 1);
+		}
+	}
+
+}
