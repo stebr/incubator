@@ -138,15 +138,16 @@ can.Control('Modal', {
 		this.element.triggerHandler('move');
 	},
 
-	" dragdown":function(elm,event,drag){
-		if(!this.options.drag || !$(event.target).hasClass('draggable')){
-			drag.cancel();
-		}
-
+	".draggable draginit":function(elm,event,drag){
 		if(this.options.of){
 			drag.limit($(this.options.of));
 		}
-		
+
+		// drag this.element rather than the 'draggable' item
+		drag.representative(this.element, 
+							drag.event.originalEvent.offsetX, 
+							drag.event.originalEvent.offsetY);
+
 		drag.noSelection(document.body);
 	}
 
