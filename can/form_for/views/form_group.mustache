@@ -1,0 +1,7 @@
+<div class="form-group {{#errorsFor for}}has-error{{/errorsFor}}">
+	{{#if label}}
+		<label>{{ label }}</label>
+	{{/if}}
+	<content></content>
+	<attr-errors for="{{ attrFor }}"></attr-errors>
+</div>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>FormFor demo page!</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      form-group.follower-group attr-errors {
+        margin-left: 17.66667%;
+      }
+      form-for {
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row" style="margin: 20px">
+       <div id="content" class="col-md-8"></div>
+    </div>
+   
+    <script id="form-template" type="text/mustache">
+      <form-for model="user">
+
+        <form-group label="Name" for="name">
+          <input can-value="name" class="form-control">
+        </form-group>
+
+        <fieldset>
+          <legend>Address</legend>
+
+          <attr-scope for="address">
+            <form-group label="City" for="city">
+              <input can-value="city" class="form-control">
+            </form-group>
+          </attr-scope>
+        </fieldset>
+
+        <fieldset>
+          <legend>Social Media</legend>
+          <attr-repeater for="socialMedia">
+            <div style="border-bottom: 2px solid #ccc; padding-bottom: 20px; margin-bottom: 20px">
+               <form-group label="Site Name" for="name">
+                  <input can-value="name" class="form-control">
+                </form-group>
+                <form-group label="Username" for="username">
+                  <input can-value="username" class="form-control">
+                </form-group>
+                <fieldset>
+                  <legend>Followers</legend>
+                  <attr-repeater for="followers" style="padding: 0">
+                    <form-group class="follower-group">
+                      <label class="col-sm-2" style="padding-left: 0">Follower #{{ @index1 }}</label>
+                      <div class="col-sm-10" style="margin-bottom: 10px">
+                        <input can-value="{{ @current }}" class="form-control">
+                      </div>
+                    </form-group>
+                  </attr-repeater>
+                </fieldset>
+            </div> 
+            
+          </attr-repeater>
+        </fieldset>
+
+        <button class="btn btn-primary save-form">Submit</button>
+      </form-for>
+
+      <button id="addFollowers">Add Followers</button>
+      <button id="addSocialMediaProfile">Add SocialMediaProfile</button>
+    </script>
+    <script type="text/javascript" src="../../../steal/steal.js"></script>
+    <script type='text/javascript'>
+      steal('incubator/can/form_for', 'can/map', 'incubator/can/validator', 'incubator/can/validator/lodash.js', function(FormFor, Map, Validate){
+
+        var User = Map.extend({});
+
+        Validate(User, function(){
+          this.addRule('name', 'presenceOf');
+          this.addRule('socialMedia.*.username', 'presenceOf');
+          this.addRule('socialMedia.*.followers.*', 'presenceOf');
+          this.addRule('address.city', 'presenceOf')
+        })
+
+        var user = window.user = new User({
+          name : 'foo',
+          address : {
+            city : ''
+          },
+          socialMedia : [{
+            username : 'retro',
+            name : 'Twitter',
+            followers : ['foo', 'bar', '']
+          }]
+        })
+
+
+        $('#content').html(
+          can.view('#form-template', {
+            user : user,
+            userErrors : can.compute(null)
+          })
+        );
+
+        $('#addFollowers').click(function(){
+          user.attr('socialMedia.0.followers').push('baz', 'qux');
+        });
+
+        $('#addSocialMediaProfile').click(function(){
+          user.attr('socialMedia').push({
+            username : 'retro',
+            name : 'github',
+            followers : ['gfoo', 'gbar']
+          })
+        })
+        
+      })
+    </script>
+  </body>
+</html>
