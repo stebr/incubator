@@ -238,5 +238,5 @@ FormFor component has the support for Validator's rulesets feature. If you want 
 By default FormFor will create internal compute to hold validation errors, but you can pass it a compute via `errors` attribute:
 
     <form-for model="user" errors="errorsCompute">
-
+      ...
     </form-for>
