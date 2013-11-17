@@ -224,3 +224,19 @@ Is equivalent to:
       <button>Submit</button>
 
     </form-for>
+
+## Ruleset support
+
+FormFor component has the support for Validator's rulesets feature. If you want to validate the data with a ruleset just pass it as an attribute to the component:
+
+    <form-for model="user" ruleset="login">
+      ...
+    </form-for>
+
+## Shared errors compute
+
+By default FormFor will create internal compute to hold validation errors, but you can pass it a compute via `errors` attribute:
+
+    <form-for model="user" errors="errorsCompute">
+
+    </form-for>
